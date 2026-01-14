@@ -1,0 +1,14 @@
+@import './vars.css';
+
+/* Dark theme overrides using system preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --input-bg: #1e1e1e;
+    --input-border: #555555;
+    --button-bg: #007bff;
+    --button-text: #ffffff;
+    --button-hover: #0056b3;
+  }
+}

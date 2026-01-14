@@ -1,0 +1,10 @@
+/* Centralized CSS variables (light theme defaults) */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --input-bg: #f9f9f9;
+  --input-border: #cccccc;
+  --button-bg: #007bff;
+  --button-text: #ffffff;
+  --button-hover: #0056b3;
+}

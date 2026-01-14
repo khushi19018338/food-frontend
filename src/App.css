@@ -1,0 +1,265 @@
+
+@import './styles/themes.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.root, html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 64px);
+  padding: 2rem 1rem;
+}
+
+.form {
+  background-color: var(--input-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 375px;
+}
+
+.form h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Header / nav styles */
+.header {
+  background: var(--input-bg);
+  border-bottom: 1px solid var(--input-border);
+}
+.nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+.nav a {
+  color: var(--text-color);
+  margin-left: 0.75rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.nav-right {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.brand {
+  font-weight: 700;
+}
+
+/* Password toggle */
+.password-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.password-row .toggle {
+  background: transparent;
+  border: none;
+  color: var(--button-bg);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.muted {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  text-align: center;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .form {
+    max-width: 100%;
+    padding: 1rem;
+  }
+  .nav {
+    padding: 0.5rem;
+  }
+  .brand {
+    font-size: 0.95rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--button-bg);
+}
+
+.button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.button:hover {
+  background-color: var(--button-hover);
+}
+
+/* Food grid */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+.food-card {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+.food-card video {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: #000;
+}
+.food-meta {
+  padding: 0.75rem;
+  text-align: left;
+}
+
+@media (max-width: 640px) {
+  .food-card video {
+    height: 160px;
+  }
+}
+
+/* Reel styles: full-screen vertical reels with snap */
+.food-reels {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  background: var(--bg-color);
+}
+
+.food-reel {
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.food-reel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40%;
+  background: linear-gradient(transparent, rgba(0,0,0,0.6));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.food-reel video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000;
+}
+
+.reel-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 36px;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  z-index: 2;
+}
+
+.reel-desc {
+  max-width: 96%;
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.visit-btn {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+}
+
+@media (max-width: 640px) {
+  .reel-desc {
+    font-size: 0.95rem;
+  }
+  .visit-btn {
+    padding: 9px 16px;
+  }
+}
+
